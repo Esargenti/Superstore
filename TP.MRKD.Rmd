@@ -51,7 +51,7 @@ summary(modelo)
 
 
 #2-	Descripción de Superstore dataset
-
+.
 #3-	Características
 
 #4-	Estadísticas descriptivas
