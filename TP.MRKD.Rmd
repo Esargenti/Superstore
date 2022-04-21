@@ -1,0 +1,61 @@
+---
+title: "Superstore dataset "
+author: "Sargenti & Vallejo"
+output: html_document
+date: '2022-04-26'
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r,libraries}
+suppressPackageStartupMessages(library(tidyverse,ggthemes))
+
+```
+
+## R Markdown
+```{r}
+library(readr)
+Superstore <- read_delim("Superstore.csv", 
+                         delim = ";", escape_double = FALSE, trim_ws = TRUE)
+Superstore
+summary (Superstore)
+```
+## Distribution of Sales
+
+```{r}
+Superstore %>% 
+  summarize(avg_Sales = round(mean(Sales),2))
+```
+
+1-	Objetivo
+  a. Max ciudades/states
+  b. Hay algun tipo de relacion entre el descuento y el vaor de compra // Porcentaje de clientes que vuelven a elegir el supermercado luego de haber comprado (analizar si tienen descuento y diversos factores)
+## Does Giving discount imply higher sales?
+
+```{r}
+names(Superstore)
+modelo=lm(Discount~Sales,data=Superstore)
+summary(modelo)
+```
+
+### The quite low R-squared value and high standard error tells us that discounts do not cause higher sales.
+  
+  #c. Con qué tipo de cliente se obtiene el mayor profit (“segment”)
+  #d. Que tipo de categoría de productos se encuentra entre la más comprada y cuál menos 
+(“category”)
+  #e. Tiempo estimativo de shipping según tipo de shipping con el objetivo de determinar la efectividad y cual no cumple con el lapso estimado. (ver cual es el más elegido y si lo vuelven a elegir los clientes)
+  #f. Teniendo en cuenta el profit calculado por estado, es conveniente continuar en las ubicaciones actuales? ¿Se debería reubicar? ¿Es necesario agregar más supermercados en algunos estados?
+  #g. En qué estados se muestra la menor cantidad de clientes (sin repetir) con el fin de mayor promoción en aquellos
+
+
+#2-	Descripción de Superstore dataset
+
+#3-	Características
+
+#4-	Estadísticas descriptivas
+
+#5- Variables a utilizar, a descartar y por qué. En el caso de valores faltantes y extremos, defina una estrategia para lidiar con ellos.  
+
+
